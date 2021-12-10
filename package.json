@@ -1,0 +1,22 @@
+{
+  "name": "image-labeling-api",
+  "version": "1.0.0",
+  "description": "A RESTful API for managing, labeling and tagging images",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HamidDoost/image-labeling-api.git"
+  },
+  "author": "Hamid Doost",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HamidDoost/image-labeling-api/issues"
+  },
+  "homepage": "https://github.com/HamidDoost/image-labeling-api#readme",
+  "devDependencies": {
+    "typescript": "^4.5.3"
+  }
+}
