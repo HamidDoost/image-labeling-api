@@ -1,6 +1,9 @@
+import "reflect-metadata";
+import { createConnection } from "typeorm";
 import express, { Application } from "express";
 import morgan from "morgan";
 import Router from "./routes";
+import dbConfig from "./config/database";
 
 //Adding server on port 3000
 const PORT = process.env.PORT || 3000;
@@ -14,6 +17,14 @@ app.use(morgan("dev"));
 
 app.use(Router);
 
-app.listen(PORT, () => {
-  console.log("Server is running on port", PORT);
-});
+//Adding database connection
+createConnection(dbConfig)
+  .then((_connection) => {
+    app.listen(PORT, () => {
+      console.log("Server is running on port", PORT);
+    });
+  })
+  .catch((err) => {
+    console.log("Unable to connect to db", err);
+    process.exit(1);
+  });
