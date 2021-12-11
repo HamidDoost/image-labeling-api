@@ -8,7 +8,7 @@ export interface IImagePayload {
   imagePath: string;
 }
 
-//Read all images from image table. Shows only 9 results per page.
+//Read all images from Image table. Shows only 9 results per page.
 export const getImages = async (page?: number): Promise<Array<Image>> => {
   const perPage = 9;
   const imageRepository = getRepository(Image);
@@ -17,7 +17,7 @@ export const getImages = async (page?: number): Promise<Array<Image>> => {
   return builder.getMany();
 };
 
-// Create a new image in image table
+// Create a new image in Image table
 export const createImage = async (payload: IImagePayload): Promise<Image> => {
   const postRepository = getRepository(Image);
   const post = new Image();
@@ -27,7 +27,7 @@ export const createImage = async (payload: IImagePayload): Promise<Image> => {
   });
 };
 
-// Read an image from image table
+// Read an image from Image table
 export const getImage = async (id: number): Promise<Image | null> => {
   const imageRepository = getRepository(Image);
   const image = await imageRepository.findOne({ id: id });

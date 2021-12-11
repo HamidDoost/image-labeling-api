@@ -5,13 +5,14 @@ import {
   CreateDateColumn,
   OneToMany,
   UpdateDateColumn,
+  // Unique,
 } from "typeorm";
 import { Image } from "./image";
+import * as bcrypt from "bcryptjs";
 
-//Creating user table in databse
 @Entity()
+// @Unique(["username"])
 export class User {
-  //Defining idnumber as primary key for user table
   @PrimaryGeneratedColumn()
   id!: number;
 
@@ -33,7 +34,6 @@ export class User {
   @Column()
   email!: string;
 
-  //Defining relationship between user and image tables in databse
   @OneToMany((_type) => Image, (image: Image) => image.user)
   images!: Array<Image>;
 
@@ -42,4 +42,12 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt!: Date;
+
+  hashPassword() {
+    this.password = bcrypt.hashSync(this.password, 8);
+  }
+
+  checkIfUnencryptedPasswordIsValid(unencryptedPassword: string) {
+    return bcrypt.compareSync(unencryptedPassword, this.password);
+  }
 }

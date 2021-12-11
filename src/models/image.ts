@@ -9,11 +9,10 @@ import {
 } from "typeorm";
 import { User } from "./user";
 
-// Creating image table in database for image data
+// Creating Table Image
 @Entity()
 export class Image {
-  // Assigning primary ket to image table
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn() // Assigning Primary Key to table
   id!: number;
   // Defining properties, "text"
   @Column({
@@ -33,7 +32,6 @@ export class Image {
   @Column({ nullable: true })
   userId!: number;
 
-  //Defining relationship between image and user tables
   @ManyToOne((_type) => User, (user: User) => user.images)
   @JoinColumn()
   user!: User;

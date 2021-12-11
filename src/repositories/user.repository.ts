@@ -17,17 +17,18 @@ export const getUsers = async (page?: number): Promise<Array<User>> => {
   return builder.getMany();
 };
 
-//Create a new user
 export const createUser = async (payload: IUserPayload): Promise<User> => {
   const userRepository = getRepository(User);
   const user = new User();
+  user.password = payload.password;
+  user.hashPassword();
   return userRepository.save({
     ...user,
     ...payload,
+    password: user.password,
   });
 };
 
-//Get a user by ID
 export const getUser = async (id: number): Promise<User | null> => {
   const userRepository = getRepository(User);
   const user = await userRepository.findOne({ id: id });
