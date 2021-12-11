@@ -1,6 +1,6 @@
 import * as ImageRepository from "./image.repository";
 import { getRepository } from "typeorm";
-import { mocked } from "ts-jest/utils";
+import { mocked } from "jest-mock";
 import { generateImageData } from "../../test/utils/generate";
 
 jest.mock("typeorm");
@@ -13,6 +13,14 @@ beforeEach(() => {
 });
 
 describe("ImageRepository", () => {
+  describe("getImages", () => {
+    test("should return empty array", async () => {
+      const images = await ImageRepository.getImages();
+      expect(images).toEqual([]);
+      expect(mockedGetRepo.createQueryBuilder).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe("getImage", () => {
     test("should return image from the database", async () => {
       const id = 1;

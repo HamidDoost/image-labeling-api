@@ -1,6 +1,6 @@
 import * as UserRepository from "./user.repository";
 import { getRepository } from "typeorm";
-import { mocked } from "ts-jest/utils";
+import { mocked } from "jest-mock";
 import { generateUserData } from "../../test/utils/generate";
 
 jest.mock("typeorm");
@@ -13,6 +13,14 @@ beforeEach(() => {
 });
 
 describe("UserRepository", () => {
+  describe("getUsers", () => {
+    test("should return empty array", async () => {
+      const users = await UserRepository.getUsers();
+      expect(users).toEqual([]);
+      expect(mockedGetRepo.createQueryBuilder).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe("getUser", () => {
     test("should return user from the database", async () => {
       const id = 1;

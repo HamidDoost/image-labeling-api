@@ -10,6 +10,19 @@ afterEach(() => {
 });
 
 describe("ImageController", () => {
+  describe("getImages", () => {
+    test("should return empty array", async () => {
+      const spy = jest
+        .spyOn(ImageRepository, "getImages")
+        .mockResolvedValueOnce([]);
+      const controller = new ImageController();
+      const images = await controller.getImages();
+      expect(images).toEqual([]);
+      expect(spy).toHaveBeenCalledWith();
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe("createComment", () => {
     test("should add comment to the database", async () => {
       const payload = generateImagePayload();
