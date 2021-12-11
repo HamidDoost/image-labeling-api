@@ -12,6 +12,7 @@ import _ from "lodash";
 import { errorHandler } from "./middlewares/errorHandler";
 import { NotFoundError } from "./errors/not.found.error";
 
+//set up express server  on port 3000
 const PORT = process.env.PORT || 3000;
 const app: Application = express();
 
@@ -30,13 +31,14 @@ app.use(morgan("dev"));
 
 app.use(Router);
 
+//not found error for invalid routes
 app.all("*", async (req, res) => {
   throw new NotFoundError();
 });
 
 app.use(errorHandler);
 
-// set port, listen for requests
+// Connect to database
 createConnection(dbConfig)
   .then((_connection) => {
     app.listen(PORT, () => {
