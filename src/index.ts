@@ -12,7 +12,7 @@ import _ from "lodash";
 import { errorHandler } from "./middlewares/errorHandler";
 import { NotFoundError } from "./errors/not.found.error";
 
-//set up express server  on port 3000
+//set up express server on port 3000
 const PORT = process.env.PORT || 3000;
 const app: Application = express();
 
