@@ -99,7 +99,7 @@ Alternatively you can access database in terminal:
 
 ## Usage
 
-Detailed documentation for usage of API was provided in two formats in docs folder of main branch. [HTML](https://github.com/HamidDoost/image-labeling-api/blob/main/docs/Documentaion_v.1.0.0.html) and [Markdown](https://github.com/HamidDoost/image-labeling-api/blob/main/docs/Documentaion_v.1.0.0.md).
+Detailed documentation for usage of API was provided in two formats in docs folder of main branch. [HTML](https://github.com/HamidDoost/image-labeling-api/blob/main/docs/Documentation_v.1.0.0.html) and [Markdown](https://github.com/HamidDoost/image-labeling-api/blob/main/docs/Documentation_v.1.0.0.md).
 
 The HTML documentation visualises examples and should be viewed in a browser after a download from git repository. Git does not provide preview for HTMl documents currently.
 
